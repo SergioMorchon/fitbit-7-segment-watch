@@ -1,36 +1,45 @@
 {
-  "name": "7-segment",
-  "version": "0.1.3",
-  "private": true,
-  "license": "UNLICENSED",
-  "devDependencies": {
-    "@fitbit/sdk": "~4.1.0",
-    "@fitbit/sdk-cli": "^1.7.1",
-    "fitbit-sdk-types": "^4.3.8"
-  },
-  "fitbit": {
-    "appUUID": "da4ced63-b88e-4d4d-b15f-e45411e18d10",
-    "appType": "clockface",
-    "appDisplayName": "7 Segment",
-    "iconFile": "resources/icon.png",
-    "wipeColor": "#ffffff",
-    "requestedPermissions": [
-      "access_aod"
-    ],
-    "buildTargets": [
-      "higgs",
-      "meson",
-      "gemini",
-      "mira"
-    ],
-    "i18n": {},
-    "defaultLanguage": "en-US"
-  },
-  "scripts": {
-    "build": "fitbit-build",
-    "debug": "fitbit"
-  },
-  "dependencies": {
-    "fitbit-widgets": "^0.1.3"
-  }
+	"name": "7-segment",
+	"version": "0.1.3",
+	"private": true,
+	"license": "UNLICENSED",
+	"devDependencies": {
+		"@fitbit/sdk": "~4.1.0",
+		"@fitbit/sdk-cli": "^1.7.1",
+		"@typescript-eslint/eslint-plugin": "^3.0.0",
+		"@typescript-eslint/parser": "^3.0.0",
+		"eslint": "^7.1.0",
+		"eslint-config-prettier": "^6.11.0",
+		"fitbit-sdk-types": "^4.3.8",
+		"prettier": "^2.0.5"
+	},
+	"fitbit": {
+		"appUUID": "da4ced63-b88e-4d4d-b15f-e45411e18d10",
+		"appType": "clockface",
+		"appDisplayName": "7 Segment",
+		"iconFile": "resources/icon.png",
+		"wipeColor": "#ffffff",
+		"requestedPermissions": [
+			"access_aod"
+		],
+		"buildTargets": [
+			"higgs",
+			"meson",
+			"gemini",
+			"mira"
+		],
+		"i18n": {},
+		"defaultLanguage": "en-US"
+	},
+	"scripts": {
+		"prettier": "prettier **/*.ts **/*.tsx **/*.json **/*.md **/*.gui -l",
+		"lint": "eslint --max-warnings 0 app/**/*.ts companion/**/*.ts settings/**/*.tsx",
+		"check-code": "npm run lint && npm run prettier",
+		"fix-code": "npm run lint -- --fix && npm run prettier -- --write",
+		"build": "fitbit-build",
+		"debug": "fitbit"
+	},
+	"dependencies": {
+		"fitbit-widgets": "^0.1.3"
+	}
 }
