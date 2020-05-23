@@ -6,8 +6,8 @@ import clock from "clock";
 const elements = ["h0", "h1", "m0", "m1"].map((id) => byId(id));
 elements.forEach((element) =>
   resize(element, {
-    height: 80,
-    width: 40,
+    height: 110,
+    width: 50,
   })
 );
 
