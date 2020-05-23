@@ -2,6 +2,10 @@ import { byId } from "fitbit-widgets/dist/document";
 import { print, resize } from "fitbit-widgets/dist/7-segment-display";
 import digits from "fitbit-widgets/dist/7-segment-display/digits";
 import clock from "clock";
+import { inbox } from "file-transfer";
+import { config } from "./config";
+import { readFileSync } from "fs";
+import { Config } from "../shared/config";
 
 const elements = ["h0", "h1", "m0", "m1"].map((id) => byId(id));
 elements.forEach((element) =>
@@ -13,15 +17,32 @@ elements.forEach((element) =>
 
 const padZero = (n: number) => `0${n}`.slice(-2);
 
-clock.granularity = "minutes";
-clock.addEventListener("tick", ({ date }) => {
-  const timeString = [date.getHours(), date.getMinutes()].map(padZero).join("");
+const getTimeString = (date: Date) =>
+  [date.getHours(), date.getMinutes()].map(padZero).join("");
+
+let lastTimeString = getTimeString(new Date());
+
+const updateTime = () => {
   for (let i = 0; i < elements.length; i++) {
-    print(elements[i], timeString[i], {
+    print(elements[i], lastTimeString[i], {
       charMap: digits,
       setVisibility: (element, on) => {
-        element.class = on ? "on" : "off";
+        element.style.fill = on ? config.colors.on : config.colors.off;
       },
     });
+  }
+};
+
+clock.granularity = "minutes";
+clock.addEventListener("tick", ({ date }) => {
+  lastTimeString = getTimeString(date);
+  updateTime();
+});
+
+inbox.addEventListener("newfile", () => {
+  let file: string | undefined;
+  while ((file = inbox.nextFile())) {
+    config.colors = (readFileSync(file, "cbor") as Config).colors;
+    updateTime();
   }
 });

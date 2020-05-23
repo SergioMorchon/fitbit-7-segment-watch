@@ -1,6 +1,5 @@
 <svg>
   <defs>
-    <link rel="stylesheet" href="index.css" />
     <link rel="import" href="fitbit-widgets/7-segment-display/index.gui" />
   </defs>
   <!--
