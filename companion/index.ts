@@ -6,7 +6,20 @@ import {
 	SETTING_KEY_COLOR_OFF,
 } from '../shared/settings';
 
-import type { Config } from '../shared/config';
+import { Config, defaultConfig } from '../shared/config';
+
+if (!settingsStorage.getItem(SETTING_KEY_COLOR_ON)) {
+	settingsStorage.setItem(
+		SETTING_KEY_COLOR_ON,
+		JSON.stringify(defaultConfig.colors.on),
+	);
+}
+if (!settingsStorage.getItem(SETTING_KEY_COLOR_OFF)) {
+	settingsStorage.setItem(
+		SETTING_KEY_COLOR_OFF,
+		JSON.stringify(defaultConfig.colors.off),
+	);
+}
 
 settingsStorage.addEventListener('change', () => {
 	const colorOn = settingsStorage.getItem(SETTING_KEY_COLOR_ON);
