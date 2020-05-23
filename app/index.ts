@@ -8,6 +8,7 @@ import { readFileSync } from "fs";
 import { Config } from "../shared/config";
 import { display } from "display";
 import { me } from "appbit";
+import { preferences } from "user-settings";
 
 const elements = ["h0", "h1", "m0", "m1"].map((id) => byId(id));
 elements.forEach((element) =>
@@ -18,9 +19,18 @@ elements.forEach((element) =>
 );
 
 const padZero = (n: number) => `0${n}`.slice(-2);
+const get12hour = (date: Date) => {
+  const hours = date.getHours() % 12;
+  return hours === 0 ? 12 : hours;
+};
 
 const getTimeString = (date: Date) =>
-  [date.getHours(), date.getMinutes()].map(padZero).join("");
+  [
+    preferences.clockDisplay === "24h"
+      ? padZero(date.getHours())
+      : ` ${get12hour(date)}`.slice(-2),
+    padZero(date.getMinutes()),
+  ].join("");
 
 let lastTimeString = getTimeString(new Date());
 
