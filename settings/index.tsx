@@ -5,10 +5,10 @@ import {
 } from "../shared/settings";
 
 const palletes = [
+  colorPalettes.white,
   colorPalettes.red,
   colorPalettes.green,
   colorPalettes.blue,
-  colorPalettes.white,
 ];
 
 registerSettingsPage(({}) => (
