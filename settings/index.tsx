@@ -1,4 +1,8 @@
 import { defaultConfig, colorPalettes } from "../shared/config";
+import {
+  SETTING_KEY_COLOR_ON,
+  SETTING_KEY_COLOR_OFF,
+} from "../shared/settings";
 
 const palletes = [
   colorPalettes.red,
@@ -13,13 +17,13 @@ registerSettingsPage(({}) => (
     <ColorSelect
       value={defaultConfig.colors.on}
       colors={palletes.map(({ on }) => ({ color: on }))}
-      settingsKey="colors-on"
+      settingsKey={SETTING_KEY_COLOR_ON}
     />
     <Text>Off</Text>
     <ColorSelect
       value={defaultConfig.colors.on}
       colors={palletes.map(({ off }) => ({ color: off }))}
-      settingsKey="colors-off"
+      settingsKey={SETTING_KEY_COLOR_OFF}
     />
   </Section>
 ));
