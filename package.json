@@ -29,6 +29,6 @@
     "debug": "fitbit"
   },
   "dependencies": {
-    "fitbit-widgets": "^0.1.2"
+    "fitbit-widgets": "^0.1.3"
   }
 }
