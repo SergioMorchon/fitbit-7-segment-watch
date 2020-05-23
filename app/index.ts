@@ -6,6 +6,8 @@ import { inbox } from "file-transfer";
 import { config } from "./config";
 import { readFileSync } from "fs";
 import { Config } from "../shared/config";
+import { display } from "display";
+import { me } from "appbit";
 
 const elements = ["h0", "h1", "m0", "m1"].map((id) => byId(id));
 elements.forEach((element) =>
@@ -38,6 +40,10 @@ clock.addEventListener("tick", ({ date }) => {
   lastTimeString = getTimeString(date);
   updateTime();
 });
+
+if (display.aodAvailable && me.permissions.granted("access_aod")) {
+  display.aodAllowed = true;
+}
 
 inbox.addEventListener("newfile", () => {
   let file: string | undefined;

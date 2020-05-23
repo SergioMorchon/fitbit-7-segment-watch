@@ -14,7 +14,9 @@
     "appDisplayName": "7 Segment",
     "iconFile": "resources/icon.png",
     "wipeColor": "#ffffff",
-    "requestedPermissions": [],
+    "requestedPermissions": [
+      "access_aod"
+    ],
     "buildTargets": [
       "higgs",
       "meson",
