@@ -8,8 +8,11 @@ import {
 	SETTING_KEY_SHOW_SECONDS,
 	SETTING_KEY_DATE_FORMAT,
 } from '../shared/settings';
-
 import { Config, defaultConfig } from '../shared/config';
+
+type SelectorSetting = {
+	values: [{ value: string }];
+};
 
 if (!settingsStorage.getItem(SETTING_KEY_COLOR_ON)) {
 	settingsStorage.setItem(
@@ -36,10 +39,10 @@ if (!settingsStorage.getItem(SETTING_KEY_SHOW_SECONDS)) {
 	);
 }
 if (!settingsStorage.getItem(SETTING_KEY_DATE_FORMAT)) {
-	settingsStorage.setItem(
-		SETTING_KEY_DATE_FORMAT,
-		JSON.stringify(defaultConfig.dateFormat),
-	);
+	const dateFormat: SelectorSetting = {
+		values: [{ value: defaultConfig.dateFormat }],
+	};
+	settingsStorage.setItem(SETTING_KEY_DATE_FORMAT, JSON.stringify(dateFormat));
 }
 
 settingsStorage.addEventListener('change', () => {
@@ -59,7 +62,8 @@ settingsStorage.addEventListener('change', () => {
 		},
 		showSeconds: JSON.parse(showSeconds),
 		showDate: JSON.parse(showDate),
-		dateFormat: JSON.parse(dateFormat).values[0].value,
+		dateFormat: (JSON.parse(dateFormat) as SelectorSetting).values[0]
+			.value as Config['dateFormat'],
 	};
 	outbox.enqueue('config', encode(config));
 });
