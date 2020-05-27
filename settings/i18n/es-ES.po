@@ -1,0 +1,17 @@
+msgid "Visibility"
+msgstr "Visibility"
+
+msgid "Show date"
+msgstr "Show date"
+
+msgid "Show seconds"
+msgstr "Show seconds"
+
+msgid "Colors"
+msgstr "Colors"
+
+msgid "On"
+msgstr "On"
+
+msgid "Off"
+msgstr "Off"

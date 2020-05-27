@@ -2,19 +2,20 @@
 	<defs>
 		<link rel="import" href="fitbit-widgets/7-segment-display/index.gui" />
 	</defs>
-	<!--
-    Sizes are defined in the app code, and applied at runtime
-    Here we also apply a spacing of:
-      - 10 units between hour digits
-      - 10 units between minutes digits
-      - 30 units between last hour digit and first minute digit
-  -->
+	<!-- date elements, relative from top center to left -->
+	<use href="#7-segment-display" id="d1" x="50%-10-25" y="0" />
+	<use href="#7-segment-display" id="d0" x="50%-10-25-5-25" y="0" />
+	<use href="#7-segment-display" id="d2" x="50%+10" y="0" />
+	<use href="#7-segment-display" id="d3" x="50%+10+25+5" y="0" />
+
 	<!-- Hour elements, relative from center to left -->
 	<use href="#7-segment-display" id="h1" x="50%-15-50" y="50%-50" />
 	<use href="#7-segment-display" id="h0" x="50%-15-50-10-50" y="50%-50" />
+
 	<!-- Minutes elements, relative from center to right -->
 	<use href="#7-segment-display" id="m0" x="50%+15" y="50%-50" />
 	<use href="#7-segment-display" id="m1" x="50%+15+50+10" y="50%-50" />
+
 	<!-- Seconds elements, centered at the bottom -->
 	<use href="#7-segment-display" id="s0" x="50%-5-25" y="100%-55" />
 	<use href="#7-segment-display" id="s1" x="50%+5" y="100%-55" />

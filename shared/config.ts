@@ -3,6 +3,8 @@ export type Config = {
 		on: string;
 		off: string;
 	};
+	showSeconds: boolean;
+	showDate: boolean;
 };
 
 export const activeColors = {
@@ -25,4 +27,6 @@ export const defaultConfig: Config = {
 		on: activeColors.white,
 		off: inactiveColors.gray,
 	},
+	showSeconds: false,
+	showDate: false,
 };
