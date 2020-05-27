@@ -79,16 +79,24 @@ const getUpdater = (
 };
 
 const updateSeconds = getUpdater(secondsElements, secondsRef, (element, on) => {
-	element.style.fill =
-		config.showSeconds && on ? config.colors.on : config.colors.off;
+	if (config.showSeconds) {
+		element.style.display = 'inline';
+		element.style.fill = on ? config.colors.on : config.colors.off;
+	} else {
+		element.style.display = 'none';
+	}
 });
 const updateTime = getUpdater(timeElements, timeRef);
 const updateDate = getUpdater(
 	dateElements,
 	dateRef,
 	(element: GraphicsElement, on: boolean) => {
-		element.style.fill =
-			config.showDate && on ? config.colors.on : config.colors.off;
+		if (config.showDate) {
+			element.style.display = 'inline';
+			element.style.fill = on ? config.colors.on : config.colors.off;
+		} else {
+			element.style.display = 'none';
+		}
 	},
 );
 
