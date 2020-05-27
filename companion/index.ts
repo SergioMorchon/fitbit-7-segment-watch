@@ -59,7 +59,7 @@ settingsStorage.addEventListener('change', () => {
 		},
 		showSeconds: JSON.parse(showSeconds),
 		showDate: JSON.parse(showDate),
-		dateFormat: JSON.parse(dateFormat),
+		dateFormat: JSON.parse(dateFormat).values[0].value,
 	};
 	outbox.enqueue('config', encode(config));
 });

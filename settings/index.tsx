@@ -13,7 +13,7 @@ import {
 } from '../shared/settings';
 import { gettext } from 'i18n';
 
-registerSettingsPage(({ settingsStorage }) => (
+registerSettingsPage(() => (
 	<Page>
 		<Section title={gettext('Visibility')}>
 			<Toggle
@@ -32,12 +32,7 @@ registerSettingsPage(({ settingsStorage }) => (
 					{ name: gettext('mmdd'), value: 'mmdd' },
 					{ name: gettext('ddmm'), value: 'ddmm' },
 				]}
-				onSelection={({ values }) => {
-					settingsStorage.setItem(
-						SETTING_KEY_DATE_FORMAT,
-						JSON.stringify(values[0].value),
-					);
-				}}
+				settingsKey={SETTING_KEY_DATE_FORMAT}
 			/>
 		</Section>
 		<Section title={gettext('Colors')}>
