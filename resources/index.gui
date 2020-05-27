@@ -15,4 +15,7 @@
 	<!-- Minutes elements, relative from center to right -->
 	<use href="#7-segment-display" id="m0" x="50%+15" y="50%-50" />
 	<use href="#7-segment-display" id="m1" x="50%+15+50+10" y="50%-50" />
+	<!-- Seconds elements, centered at the bottom -->
+	<use href="#7-segment-display" id="s0" x="50%-5-25" y="100%-55" />
+	<use href="#7-segment-display" id="s1" x="50%+5" y="100%-55" />
 </svg>

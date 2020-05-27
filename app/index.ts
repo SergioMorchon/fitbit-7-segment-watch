@@ -10,11 +10,19 @@ import { display } from 'display';
 import { me } from 'appbit';
 import { preferences } from 'user-settings';
 
-const elements = ['h0', 'h1', 'm0', 'm1'].map(id => byId(id));
-elements.forEach(element =>
+const hoursElements = ['h0', 'h1'].map(id => byId(id));
+const minutesElements = ['m0', 'm1'].map(id => byId(id));
+const secondsElements = ['s0', 's1'].map(id => byId(id));
+[...hoursElements, ...minutesElements].forEach(element =>
 	resize(element, {
 		height: 110,
 		width: 50,
+	}),
+);
+secondsElements.forEach(element =>
+	resize(element, {
+		height: 50,
+		width: 25,
 	}),
 );
 
@@ -30,9 +38,11 @@ const getTimeString = (date: Date) =>
 			? padZero(date.getHours())
 			: ` ${get12hour(date)}`.slice(-2),
 		padZero(date.getMinutes()),
+		padZero(date.getSeconds()),
 	].join('');
 
 let lastTimeString = getTimeString(new Date());
+const elements = [...hoursElements, ...minutesElements, ...secondsElements];
 
 const updateTime = () => {
 	for (let i = 0; i < elements.length; i++) {
@@ -45,7 +55,7 @@ const updateTime = () => {
 	}
 };
 
-clock.granularity = 'minutes';
+clock.granularity = 'seconds';
 clock.addEventListener('tick', ({ date }) => {
 	lastTimeString = getTimeString(date);
 	updateTime();
