@@ -10,6 +10,8 @@ import { display } from 'display';
 import { me } from 'appbit';
 import { preferences } from 'user-settings';
 
+const isAODEnabled = () => display.aodActive && display.on;
+
 const dateElements = ['d0', 'd1', 'd2', 'd3'].map(id => byId(id));
 const timeElements = ['h0', 'h1', 'm0', 'm1'].map(id => byId(id));
 const secondsElements = ['s0', 's1'].map(id => byId(id));
@@ -79,7 +81,7 @@ const getUpdater = (
 };
 
 const updateSeconds = getUpdater(secondsElements, secondsRef, (element, on) => {
-	if (config.showSeconds) {
+	if (config.showSeconds && !isAODEnabled()) {
 		element.style.display = 'inline';
 		element.style.fill = on ? config.colors.on : config.colors.off;
 	} else {
@@ -91,7 +93,7 @@ const updateDate = getUpdater(
 	dateElements,
 	dateRef,
 	(element: GraphicsElement, on: boolean) => {
-		if (config.showDate) {
+		if (config.showDate && !isAODEnabled()) {
 			element.style.display = 'inline';
 			element.style.fill = on ? config.colors.on : config.colors.off;
 		} else {
@@ -100,7 +102,10 @@ const updateDate = getUpdater(
 	},
 );
 
-clock.granularity = 'seconds';
+const updateClockGranularity = () => {
+	clock.granularity = isAODEnabled() ? 'minutes' : 'seconds';
+};
+updateClockGranularity();
 clock.addEventListener('tick', ({ date }) => {
 	const newSeconds = getSecondsString(date);
 	if (newSeconds !== secondsRef.current) {
@@ -121,8 +126,18 @@ clock.addEventListener('tick', ({ date }) => {
 	}
 });
 
+const update = () => {
+	updateSeconds();
+	updateTime();
+	updateDate();
+};
+
 if (display.aodAvailable && me.permissions.granted('access_aod')) {
 	display.aodAllowed = true;
+	display.addEventListener('change', () => {
+		updateClockGranularity();
+		update();
+	});
 }
 
 inbox.addEventListener('newfile', () => {
@@ -133,8 +148,6 @@ inbox.addEventListener('newfile', () => {
 		config.showSeconds = newConfig.showSeconds;
 		config.showDate = newConfig.showDate;
 		config.dateFormat = newConfig.dateFormat;
-		updateSeconds();
-		updateTime();
-		updateDate();
+		update();
 	}
 });
