@@ -1,17 +1,29 @@
 msgid "Visibility"
-msgstr "Visibilidad"
+msgstr "Visibility"
 
 msgid "Show date"
-msgstr "Mostrar fecha"
+msgstr "Show date"
 
 msgid "Show seconds"
-msgstr "Mostrar segundos"
+msgstr "Show seconds"
 
 msgid "Colors"
-msgstr "Colores"
+msgstr "Colors"
 
 msgid "On"
-msgstr "Encendido"
+msgstr "On"
 
 msgid "Off"
-msgstr "Apagado"
+msgstr "Off"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "mmdd"
+msgstr "month / day"
+
+msgid "ddmm"
+msgstr "day / month"

@@ -10,19 +10,17 @@ import { display } from 'display';
 import { me } from 'appbit';
 import { preferences } from 'user-settings';
 
-const dayOfMonthElements = ['d0', 'd1'].map(id => byId(id));
-const monthElements = ['d2', 'd3'].map(id => byId(id));
-const hoursElements = ['h0', 'h1'].map(id => byId(id));
-const minutesElements = ['m0', 'm1'].map(id => byId(id));
+const dateElements = ['d0', 'd1', 'd2', 'd3'].map(id => byId(id));
+const timeElements = ['h0', 'h1', 'm0', 'm1'].map(id => byId(id));
 const secondsElements = ['s0', 's1'].map(id => byId(id));
 
-[...hoursElements, ...minutesElements].forEach(element =>
+timeElements.forEach(element =>
 	resize(element, {
 		height: 110,
 		width: 50,
 	}),
 );
-[...monthElements, ...dayOfMonthElements, ...secondsElements].forEach(element =>
+[...dateElements, ...secondsElements].forEach(element =>
 	resize(element, {
 		height: 50,
 		width: 25,
@@ -36,13 +34,18 @@ const get12hour = (date: Date) => {
 };
 
 const getSecondsString = (date: Date) => padZero(date.getSeconds());
-const getMinutesString = (date: Date) => padZero(date.getMinutes());
-const getHoursString = (date: Date) =>
-	preferences.clockDisplay === '24h'
-		? padZero(date.getHours())
-		: ` ${get12hour(date)}`.slice(-2);
-const getDayOfMonthString = (date: Date) => padZero(date.getDate());
-const getMonthString = (date: Date) => padZero(date.getMonth() + 1);
+const getTimeString = (date: Date) =>
+	[
+		preferences.clockDisplay === '24h'
+			? padZero(date.getHours())
+			: ` ${get12hour(date)}`.slice(-2),
+		padZero(date.getMinutes()),
+	].join('');
+const getDateString = (date: Date) => {
+	const mm = padZero(date.getMonth() + 1);
+	const dd = padZero(date.getDate());
+	return (config.dateFormat === 'mmdd' ? [mm, dd] : [dd, mm]).join('');
+};
 
 type Ref = {
 	current: string;
@@ -51,16 +54,10 @@ type Ref = {
 const secondsRef: Ref = {
 	current: '',
 };
-const minutesRef: Ref = {
+const timeRef: Ref = {
 	current: '',
 };
-const hoursRef: Ref = {
-	current: '',
-};
-const dayOfMonthRef: Ref = {
-	current: '',
-};
-const monthRef: Ref = {
+const dateRef: Ref = {
 	current: '',
 };
 
@@ -85,22 +82,14 @@ const updateSeconds = getUpdater(secondsElements, secondsRef, (element, on) => {
 	element.style.fill =
 		config.showSeconds && on ? config.colors.on : config.colors.off;
 });
-const updateMinutes = getUpdater(minutesElements, minutesRef);
-const updateHours = getUpdater(hoursElements, hoursRef);
-
-const setDateElementVisibility = (element: GraphicsElement, on: boolean) => {
-	element.style.fill =
-		config.showDate && on ? config.colors.on : config.colors.off;
-};
-const updateDayOfMonth = getUpdater(
-	dayOfMonthElements,
-	dayOfMonthRef,
-	setDateElementVisibility,
-);
-const updateMonth = getUpdater(
-	monthElements,
-	monthRef,
-	setDateElementVisibility,
+const updateTime = getUpdater(timeElements, timeRef);
+const updateDate = getUpdater(
+	dateElements,
+	dateRef,
+	(element: GraphicsElement, on: boolean) => {
+		element.style.fill =
+			config.showDate && on ? config.colors.on : config.colors.off;
+	},
 );
 
 clock.granularity = 'seconds';
@@ -111,28 +100,16 @@ clock.addEventListener('tick', ({ date }) => {
 		updateSeconds();
 	}
 
-	const newMinutes = getMinutesString(date);
-	if (newMinutes !== minutesRef.current) {
-		minutesRef.current = newMinutes;
-		updateMinutes();
+	const newTime = getTimeString(date);
+	if (newTime !== timeRef.current) {
+		timeRef.current = newTime;
+		updateTime();
 	}
 
-	const newHours = getHoursString(date);
-	if (newHours !== hoursRef.current) {
-		hoursRef.current = newHours;
-		updateHours();
-	}
-
-	const newDayOfMonth = getDayOfMonthString(date);
-	if (newDayOfMonth !== dayOfMonthRef.current) {
-		dayOfMonthRef.current = newDayOfMonth;
-		updateDayOfMonth();
-	}
-
-	const newMonth = getMonthString(date);
-	if (newMonth !== monthRef.current) {
-		monthRef.current = newMonth;
-		updateMonth();
+	const newDate = getDateString(date);
+	if (newDate !== dateRef.current) {
+		dateRef.current = newDate;
+		updateDate();
 	}
 });
 
@@ -147,10 +124,9 @@ inbox.addEventListener('newfile', () => {
 		config.colors = newConfig.colors;
 		config.showSeconds = newConfig.showSeconds;
 		config.showDate = newConfig.showDate;
+		config.dateFormat = newConfig.dateFormat;
 		updateSeconds();
-		updateMinutes();
-		updateHours();
-		updateDayOfMonth();
-		updateMonth();
+		updateTime();
+		updateDate();
 	}
 });

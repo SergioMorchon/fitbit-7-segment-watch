@@ -1,13 +1,19 @@
-import { defaultConfig, activeColors, inactiveColors } from '../shared/config';
+import {
+	defaultConfig,
+	activeColors,
+	inactiveColors,
+	Config,
+} from '../shared/config';
 import {
 	SETTING_KEY_COLOR_ON,
 	SETTING_KEY_COLOR_OFF,
 	SETTING_KEY_SHOW_SECONDS,
 	SETTING_KEY_SHOW_DATE,
+	SETTING_KEY_DATE_FORMAT,
 } from '../shared/settings';
 import { gettext } from 'i18n';
 
-registerSettingsPage(() => (
+registerSettingsPage(({ settingsStorage }) => (
 	<Page>
 		<Section title={gettext('Visibility')}>
 			<Toggle
@@ -17,6 +23,21 @@ registerSettingsPage(() => (
 			<Toggle
 				label={gettext('Show seconds')}
 				settingsKey={SETTING_KEY_SHOW_SECONDS}
+			/>
+		</Section>
+		<Section title={gettext('Format')}>
+			<Select<{ name: string; value: Config['dateFormat'] }>
+				label={gettext('Date')}
+				options={[
+					{ name: gettext('mmdd'), value: 'mmdd' },
+					{ name: gettext('ddmm'), value: 'ddmm' },
+				]}
+				onSelection={({ values }) => {
+					settingsStorage.setItem(
+						SETTING_KEY_DATE_FORMAT,
+						JSON.stringify(values[0].value),
+					);
+				}}
 			/>
 		</Section>
 		<Section title={gettext('Colors')}>

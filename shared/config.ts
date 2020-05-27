@@ -5,6 +5,7 @@ export type Config = {
 	};
 	showSeconds: boolean;
 	showDate: boolean;
+	dateFormat: 'ddmm' | 'mmdd';
 };
 
 export const activeColors = {
@@ -29,4 +30,5 @@ export const defaultConfig: Config = {
 	},
 	showSeconds: false,
 	showDate: false,
+	dateFormat: 'mmdd',
 };
