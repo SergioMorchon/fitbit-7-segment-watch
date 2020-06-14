@@ -44,7 +44,7 @@ registerSettingsPage(() => (
 					activeColors.red,
 					activeColors.green,
 					activeColors.blue,
-				].map(color => ({ color }))}
+				].map((color) => ({ color }))}
 				settingsKey={SETTING_KEY_COLOR_ON}
 			/>
 			<Text>{gettext('Off')}</Text>
@@ -56,7 +56,7 @@ registerSettingsPage(() => (
 					inactiveColors.red,
 					inactiveColors.green,
 					inactiveColors.blue,
-				].map(color => ({ color }))}
+				].map((color) => ({ color }))}
 				settingsKey={SETTING_KEY_COLOR_OFF}
 			/>
 		</Section>

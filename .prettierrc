@@ -1,17 +1,13 @@
 {
-  "arrowParens": "avoid",
-  "bracketSpacing": true,
-  "semi": true,
-  "singleQuote": true,
-  "trailingComma": "all",
-  "useTabs": true,
-  "endOfLine": "lf",
-  "overrides": [
-    {
-      "files": ["*.gui", "*.svg"],
-      "options": {
-        "parser": "html"
-      }
-    }
-  ]
+	"singleQuote": true,
+	"trailingComma": "all",
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": ["*.gui", "*.svg"],
+			"options": {
+				"parser": "html"
+			}
+		}
+	]
 }

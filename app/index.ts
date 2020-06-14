@@ -55,7 +55,7 @@ const updateSegment = (segment: GraphicsElement, on: boolean) => {
 const showDate = (): boolean => config.showDate && !isAODEnabled();
 const showSeconds = (): boolean => config.showSeconds && !isAODEnabled();
 
-const dateDisplays = ['d0', 'd1', 'd2', 'd3'].map(id =>
+const dateDisplays = ['d0', 'd1', 'd2', 'd3'].map((id) =>
 	segmentDisplay(byId(id), {
 		charMap: digits,
 		height: 50,
@@ -65,7 +65,7 @@ const dateDisplays = ['d0', 'd1', 'd2', 'd3'].map(id =>
 		updateSegment,
 	}),
 );
-const timeDisplays = ['h0', 'h1', 'm0', 'm1'].map(id =>
+const timeDisplays = ['h0', 'h1', 'm0', 'm1'].map((id) =>
 	segmentDisplay(byId(id), {
 		charMap: digits,
 		height: 110,
@@ -75,7 +75,7 @@ const timeDisplays = ['h0', 'h1', 'm0', 'm1'].map(id =>
 		updateSegment,
 	}),
 );
-const secondsDisplays = ['s0', 's1'].map(id =>
+const secondsDisplays = ['s0', 's1'].map((id) =>
 	segmentDisplay(byId(id), {
 		charMap: digits,
 		height: 50,
