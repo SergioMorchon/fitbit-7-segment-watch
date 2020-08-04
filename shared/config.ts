@@ -28,7 +28,7 @@ export const defaultConfig: Config = {
 		on: activeColors.white,
 		off: inactiveColors.gray,
 	},
-	showSeconds: false,
-	showDate: false,
+	showSeconds: true,
+	showDate: true,
 	dateFormat: 'mmdd',
 };

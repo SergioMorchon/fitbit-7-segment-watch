@@ -39,10 +39,10 @@ if (!settingsStorage.getItem(SETTING_KEY_SHOW_SECONDS)) {
 	);
 }
 if (!settingsStorage.getItem(SETTING_KEY_DATE_FORMAT)) {
-	const dateFormat: SelectorSetting = {
-		values: [{ value: defaultConfig.dateFormat }],
-	};
-	settingsStorage.setItem(SETTING_KEY_DATE_FORMAT, JSON.stringify(dateFormat));
+	settingsStorage.setItem(
+		SETTING_KEY_DATE_FORMAT,
+		JSON.stringify({ selected: [0] }),
+	);
 }
 
 settingsStorage.addEventListener('change', () => {
