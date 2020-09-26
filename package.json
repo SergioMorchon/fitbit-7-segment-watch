@@ -6,12 +6,12 @@
 	"devDependencies": {
 		"@fitbit/sdk": "^4.2.1",
 		"@fitbit/sdk-cli": "^1.7.3",
-		"@typescript-eslint/eslint-plugin": "^3.10.1",
-		"@typescript-eslint/parser": "^3.10.1",
+		"@typescript-eslint/eslint-plugin": "^4.2.0",
+		"@typescript-eslint/parser": "^4.2.0",
 		"eslint": "^7.9.0",
-		"eslint-config-prettier": "^6.11.0",
+		"eslint-config-prettier": "^6.12.0",
 		"fitbit-sdk-types": "^5.0.0",
-		"prettier": "^2.1.1"
+		"prettier": "^2.1.2"
 	},
 	"fitbit": {
 		"appUUID": "da4ced63-b88e-4d4d-b15f-e45411e18d10",
