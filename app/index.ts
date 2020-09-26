@@ -153,4 +153,5 @@ inbox.addEventListener('newfile', () => {
 		updateDate();
 		updateVisibility();
 	}
+	display.poke();
 });

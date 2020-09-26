@@ -32,9 +32,6 @@ registerSettingsPage(() => (
 					{ name: gettext('mmdd'), value: 'mmdd' },
 					{ name: gettext('ddmm'), value: 'ddmm' },
 				]}
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				selected={[0]}
 				settingsKey={SETTING_KEY_DATE_FORMAT}
 			/>
 		</Section>

@@ -11,7 +11,7 @@ import {
 import { Config, defaultConfig } from '../shared/config';
 
 type SelectorSetting = {
-	values: [{ value: string }];
+	values?: [{ value: string }];
 };
 
 if (!settingsStorage.getItem(SETTING_KEY_COLOR_ON)) {
@@ -62,8 +62,9 @@ settingsStorage.addEventListener('change', () => {
 		},
 		showSeconds: JSON.parse(showSeconds),
 		showDate: JSON.parse(showDate),
-		dateFormat: (JSON.parse(dateFormat) as SelectorSetting).values[0]
-			.value as Config['dateFormat'],
+		dateFormat:
+			((JSON.parse(dateFormat) as SelectorSetting).values?.[0]
+				.value as Config['dateFormat']) ?? defaultConfig.dateFormat,
 	};
 	outbox.enqueue('config', encode(config));
 });
