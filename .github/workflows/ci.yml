@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - sdk-5
   pull_request:
     branches:
       - master
