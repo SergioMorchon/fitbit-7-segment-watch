@@ -4,14 +4,14 @@
 	"private": true,
 	"license": "UNLICENSED",
 	"devDependencies": {
-		"@fitbit/sdk": "^4.2.1",
+		"@fitbit/sdk": "^5.0.1",
 		"@fitbit/sdk-cli": "^1.7.3",
-		"@typescript-eslint/eslint-plugin": "^4.2.0",
-		"@typescript-eslint/parser": "^4.2.0",
-		"eslint": "^7.9.0",
-		"eslint-config-prettier": "^6.12.0",
-		"fitbit-sdk-types": "^5.0.0",
-		"prettier": "^2.1.2"
+		"@typescript-eslint/eslint-plugin": "^4.13.0",
+		"@typescript-eslint/parser": "^4.13.0",
+		"eslint": "^7.17.0",
+		"eslint-config-prettier": "^7.1.0",
+		"fitbit-sdk-types": "^6.0.1",
+		"prettier": "^2.2.1"
 	},
 	"fitbit": {
 		"appUUID": "da4ced63-b88e-4d4d-b15f-e45411e18d10",
@@ -23,10 +23,8 @@
 			"access_aod"
 		],
 		"buildTargets": [
-			"higgs",
-			"meson",
-			"gemini",
-			"mira"
+			"atlas",
+			"vulcan"
 		],
 		"i18n": {},
 		"defaultLanguage": "en-US"
@@ -36,10 +34,10 @@
 		"lint": "eslint --max-warnings 0 app/**/*.ts companion/**/*.ts settings/**/*.tsx",
 		"check-code": "npm run lint && npm run prettier",
 		"fix-code": "npm run lint -- --fix && npm run prettier -- --write",
-		"build": "fitbit-build",
+		"build": "fitbit-widgets install 7-segment-display && fitbit-build",
 		"debug": "fitbit"
 	},
 	"dependencies": {
-		"fitbit-widgets": "^0.2.1"
+		"fitbit-widgets": "^1.0.0"
 	}
 }

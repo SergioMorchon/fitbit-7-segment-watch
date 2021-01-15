@@ -1,6 +1,6 @@
 <svg>
 	<defs>
-		<link rel="import" href="fitbit-widgets/7-segment-display/index.gui" />
+		<link rel="import" href="fitbit-widgets/7-segment-display/index.defs" />
 	</defs>
 	<!-- date elements, relative from top center to left -->
 	<use href="#7-segment-display" id="d1" x="50%-10-25" y="10" />
