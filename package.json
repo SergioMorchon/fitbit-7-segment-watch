@@ -4,14 +4,14 @@
 	"private": true,
 	"license": "UNLICENSED",
 	"devDependencies": {
-		"@fitbit/sdk": "^6.0.1",
+		"@fitbit/sdk": "^6.0.2",
 		"@fitbit/sdk-cli": "^1.7.3",
-		"@typescript-eslint/eslint-plugin": "^4.30.0",
-		"@typescript-eslint/parser": "^4.30.0",
-		"eslint": "^7.32.0",
+		"@typescript-eslint/eslint-plugin": "^5.1.0",
+		"@typescript-eslint/parser": "^5.1.0",
+		"eslint": "^8.0.1",
 		"eslint-config-prettier": "^8.3.0",
-		"fitbit-sdk-types": "^7.0.0",
-		"prettier": "^2.3.2"
+		"fitbit-sdk-types": "^7.0.4",
+		"prettier": "^2.4.1"
 	},
 	"fitbit": {
 		"appUUID": "da4ced63-b88e-4d4d-b15f-e45411e18d10",
@@ -39,5 +39,6 @@
 	},
 	"dependencies": {
 		"fitbit-widgets": "^1.0.2"
-	}
+	},
+	"packageManager": "yarn@3.0.2"
 }
