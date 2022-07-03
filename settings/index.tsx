@@ -60,6 +60,13 @@ registerSettingsPage(
 					settingsKey={SETTING_KEY_COLOR_OFF}
 				/>
 			</Section>
+			<Section title={gettext('Thank the author')}>
+				<Text>{gettext('Send BTC')}</Text>
+				<TextInput
+					label={gettext('Address')}
+					value="bc1p8fdpun4rgqe26wnt4mplzgzm432x8g24rnvxh8v8l8prccldvgks6gyyhe"
+				/>
+			</Section>
 		</Page>
 	),
 );

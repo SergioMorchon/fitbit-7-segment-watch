@@ -27,3 +27,12 @@ msgstr "mes / día"
 
 msgid "ddmm"
 msgstr "día / mes"
+
+msgid "Thank the author"
+msgstr "Agradecer al autor"
+
+msgid "Send BTC"
+msgstr "Enviar BTC"
+
+msgid "Address"
+msgstr "Dirección"
