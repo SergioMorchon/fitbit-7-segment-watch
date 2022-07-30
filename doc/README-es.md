@@ -1,12 +1,16 @@
 # 7 Segment
 
-Reloj sencillo basado en pantallas de 7 segmentos
-
-Es un reloj gratuito hecho con código abierto también gratuito.
-Puedes verlo aquí: https://github.com/SergioMorchon/fitbit-7-segment-watch
-Gran parte del código que publico es con el propósito de aprender, y el motivo detrás de hacerlo público es que aprendamos juntos.
-También puedes ver otros proyectos a los que doy soporte y que permite también a otros desarrolladores de Fitbit crear grandes cosas para ti: https://github.com/SergioMorchon?tab=repositories&q=fitbit
+Un reloj sencillo, sobrio y gratuito, inspirado por el clásico display de 7 segmentos.
 
 ## Agradecer al autor
 
-Puedes enviar una propina al autor desde la sección de Configuración de este reloj.
+Si quieres darle soporte a mis proyectos, me encantan el café y la pizza:
+
+- bitcoin:bc1qrrr8xu8dxtxew49j2u8wfe3tm97rgca03sjslt
+- https://www.buymeacoffee.com/sergio.morchon
+
+## Código fuente
+
+Puedes encontrarlo aquí: https://github.com/SergioMorchon/fitbit-7-segment-watch
+
+También puedes ver otros proyectos a los que doy soporte y que ayudan a otros desarrolladores de Fitbit a crear grandes cosas para la comunidad: https://github.com/SergioMorchon?tab=repositories&q=fitbit

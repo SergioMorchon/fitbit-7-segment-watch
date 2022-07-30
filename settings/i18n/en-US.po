@@ -35,4 +35,7 @@ msgid "Send BTC"
 msgstr "Send BTC"
 
 msgid "Address"
-msgstr "Dirección"
+msgstr "Address"
+
+msgid "Buy me a coffee"
+msgstr "Buy me a coffee"

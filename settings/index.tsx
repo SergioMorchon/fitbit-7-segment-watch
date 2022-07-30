@@ -64,8 +64,11 @@ registerSettingsPage(
 				<Text>{gettext('Send BTC')}</Text>
 				<TextInput
 					label={gettext('Address')}
-					value="bc1p8fdpun4rgqe26wnt4mplzgzm432x8g24rnvxh8v8l8prccldvgks6gyyhe"
+					value="bc1qrrr8xu8dxtxew49j2u8wfe3tm97rgca03sjslt"
 				/>
+				<Link source="https://www.buymeacoffee.com/sergio.morchon">
+					{gettext('Buy me a coffee')}
+				</Link>
 			</Section>
 		</Page>
 	),
